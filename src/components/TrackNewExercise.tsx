@@ -1,4 +1,5 @@
 import React, { useState, FormEvent } from 'react'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 export interface TrackNewExerciseProps {
   trackId: TrackIdentifier
@@ -16,7 +17,10 @@ export function TrackNewExercise({
   const [tasks, setTasks] = useState('')
   const [example, setExample] = useState('')
   const [exampleFilename, setExampleFilename] = useState('')
-  const [cliToken, setCliToken] = useState('')
+  const [cliToken, setCliToken] = useLocalStorage(
+    'exercism.dashboard.cli-token',
+    ''
+  )
   const [posting, setPosting] = useState(false)
   const [pullRequestUrl, setPullRequestUrl] = useState('')
 
